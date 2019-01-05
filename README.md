@@ -1,5 +1,7 @@
-# "Textual Spanning: Reproduction Guide
-===========================
+# "Textual Spanning" 
+
+## Reproduction Guide
+
 Dustin S. Stoltz and Marshall A. Taylor
 
 This is the code and data necessary to reproduce the graphs and plots for Stoltz and Taylor (2019) "Textual Spanning: Finding Discursive Holes in Text Networks" in _Socius_.
@@ -10,7 +12,7 @@ The `textSpan` function takes this document by document similarity matrix and ou
 
 <img src="https://latex.codecogs.com/gif.latex?S_i%20%3D%20%5Csum_j%20%5Cleft%20%28%20p_%7Bij%7D%20&plus;%20%5Csum_q%20%5Cfrac%7Bp_%7Bqj%7D%7D%7Bp_%7Biq%7D%7D%20%5Cright%20%29%5E2"/>
 
-# textSpan Function
+## textSpan Function
 ----
 
 ``` r
@@ -38,9 +40,9 @@ The `textSpan` function takes this document by document similarity matrix and ou
       }
  ```
  
-# Simulated and Empirical Examples
+## Simulated and Empirical Examples
 -----
-## Load and Prepare Data
+### Load and Prepare Data
 Download CSVs, set your working directory, and load these additional packages used in the analysis and visualization:
 ``` r
         #install.packages("pacman")
@@ -92,7 +94,7 @@ Create iGraph object for visualization
                                         add.colnames = NULL)
 ```
 
-## Calculating Measures
+### Calculating Measures
 ``` r
     # Textual SPANNING --------------------------------------------------------
         # simulated graphs
@@ -127,9 +129,9 @@ Create iGraph object for visualization
         length <- read.csv("2_doc_lengths.csv")
         V(g.tms)$length <- length$length
 ```
-## Generating Graphs and Plots
+### Generating Graphs and Plots
 
-### Simulated Graphs
+#### Simulated Graphs
 ``` r
     # Prepare simulated graphs for ggplot:
         ## disconnected ring
@@ -293,7 +295,7 @@ Create iGraph object for visualization
     net3.1.0
     dev.off()
 ```
-### Topic Model Solution Graphs
+#### Topic Model Solution Graphs
 ``` r
     ## Prepare Topic Model Graph Layout
         # Removing edges for visualization
@@ -412,7 +414,7 @@ Create iGraph object for visualization
         dev.off()
 ```
 
-### Correlation Table Comparing Spanning Scores with Centrality Measures
+#### Correlation Table Comparing Spanning Scores with Centrality Measures
 ``` r
         cor <- data.frame()[1:100, ]
         head(cor)
@@ -428,7 +430,7 @@ Create iGraph object for visualization
         chart.Correlation(cor, histogram=T, pch=19, method="pearson")
         dev.off()
 ```
-### Generate Box Plot Comparing Top 5 Spanning Posts across Centrality Measures
+#### Generate Box Plot Comparing Top 5 Spanning Posts across Centrality Measures
 ``` r
     ## Create data frame
         names <- V(g.tms)$name
@@ -487,7 +489,7 @@ Create iGraph object for visualization
         box
         dev.off()
  ```
- ### Generate Topic Correlation Network 
+ #### Generate Topic Correlation Network 
  ``` r
         cor.tms <- cor(tms)
         cor.tms <- ifelse(cor.tms<0, 0, cor.tms)
