@@ -41,7 +41,7 @@ The `textSpan` function takes this document by document similarity matrix and ou
 -----
 ## Load and Prepare Data
 Download CSVs, set your working directory, and load these additional packages used in the analysis and visualization:
-```{r}
+``` r
     #install.packages("pacman")
     library(pacman)
     pacman::p_load(ggnetwork, ggplot2, ggpubr, igraph,
@@ -51,7 +51,7 @@ Download CSVs, set your working directory, and load these additional packages us
 
 ```
 Load simulated datasets:
-```{r} 
+``` r 
   sim0 <- read.csv("2_sim_ring_0.csv", stringsAsFactors=FALSE, row.names=1)
   sim1 <- read.csv("2_sim_ring_b.csv", stringsAsFactors=FALSE, row.names=1)
   sim2 <- read.csv("2_sim_clique.csv", stringsAsFactors=FALSE, row.names=1)
@@ -60,17 +60,17 @@ Load simulated datasets:
 We use the CMU political blogs dataset which are used with the `stm` package. Because n=13,000 in this dataset, for simplicity we randomly sample 100 blog posts which we use in the following. We offer a subset of the document by term matrix and the document by topic probability matrix, the latter of which is based on the pre-processed topic model solution provided by CMU team (the RData file can be downloaded here: http://goo.gl/VPdxlS).
 
 Load pre-fitted topic model solution on subset of 100 randomly sampled blogposts:
-```{r}
+``` r
   tms  <- as.matrix(read.csv("2_subset_topic_solution.csv", 
                                     stringsAsFactors=FALSE, row.names=1))
 ```
 Calculate cosine similarities between documents based on topic model solution
-```{r}
+``` r
   cos.tms <- tcrossprod(tms / sqrt(rowSums(tms * tms)))
 ```
 
 Create tnet object to calculate Opsahl et al's weighted measures
-```{r}
+``` r
     # simulated ring graphs
     tn.sim0 <- as.tnet(sim0, type="weighted one-mode tnet")
     tn.sim1 <- as.tnet(sim1, type="weighted one-mode tnet")
@@ -78,7 +78,7 @@ Create tnet object to calculate Opsahl et al's weighted measures
     tn.tms <- as.tnet(cos.tms, type="weighted one-mode tnet")
 ```
 Create iGraph object for visualization
-```{r}
+``` r
     # simulated networks
     sim.net0 <- graph.adjacency(as.matrix(sim0), diag=F, mode="lower", weighted=T)
     sim.net1 <- graph.adjacency(as.matrix(sim1), diag=F, mode="lower", weighted=T)
@@ -90,8 +90,9 @@ Create iGraph object for visualization
                                         diag = FALSE,
                                         add.colnames = NULL)
 ```
+
 ## Calculating Measures
-```{r}
+``` r
     # SPANNING --------------------------------------------------------
         # simulated networks
         # alpha set to 1.0
@@ -127,7 +128,7 @@ Create iGraph object for visualization
 ```
 ## Generating Graphs and Plots
 ### Simulated Data
-```{r}
+``` r
     # Prepare simulated networks for ggplot:
         ## disconnected ring
         l0 <- layout_in_circle(sim.net0)
@@ -291,7 +292,7 @@ Create iGraph object for visualization
     dev.off()
 ```
 ### Topic Model Solution Graphs
-```{r}
+``` r
     ## Prepare Topic Model Network Layout
         # Removing edges for visualization
         p.tms <- igraph::delete.edges(g.tms, E(g.tms)[weight<.6])
@@ -410,7 +411,7 @@ Create iGraph object for visualization
 ```
 
 ### Correlation Table Comparing Spanning Scores with Centrality Measures
-```{r}
+``` r
         cor <- data.frame()[1:100, ]
         head(cor)
         cor$tms.span.1.0 <- V(g.tms)$span.1.0
@@ -426,6 +427,7 @@ Create iGraph object for visualization
         dev.off()
 ```
 ### Generate Box Plot Comparing Top 5 Spanning Posts across Centrality Measures
+``` r
     ## Create data frame
         names <- V(g.tms)$name
         spanning <- V(g.tms)$span.1.0
@@ -484,7 +486,7 @@ Create iGraph object for visualization
         dev.off()
  ```
  ### Generate Topic Correlation Network 
- ```{r}
+ ``` r
         cor.tms <- cor(tms)
         cor.tms <- ifelse(cor.tms<0, 0, cor.tms)
         new.names <- paste("T", seq(1:20), sep="")
