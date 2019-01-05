@@ -42,31 +42,31 @@ The `textSpan` function takes this document by document similarity matrix and ou
 ## Load and Prepare Data
 Download CSVs, set your working directory, and load these additional packages used in the analysis and visualization:
 ``` r
-    #install.packages("pacman")
-    library(pacman)
-    pacman::p_load(ggnetwork, ggplot2, ggpubr, igraph,
-                    corrplot, tnet, PerformanceAnalytics,
-                    stm, reshape2, qgraph, intergraph, 
-                    install = T)
+        #install.packages("pacman")
+        library(pacman)
+        pacman::p_load(ggnetwork, ggplot2, ggpubr, igraph,
+                        corrplot, tnet, PerformanceAnalytics,
+                        stm, reshape2, qgraph, intergraph, 
+                        install = T)
 
 ```
 Load simulated datasets:
 ``` r 
-  sim0 <- read.csv("2_sim_ring_0.csv", stringsAsFactors=FALSE, row.names=1)
-  sim1 <- read.csv("2_sim_ring_b.csv", stringsAsFactors=FALSE, row.names=1)
-  sim2 <- read.csv("2_sim_clique.csv", stringsAsFactors=FALSE, row.names=1)
-  sim3 <- read.csv("2_sim_core_periph.csv", stringsAsFactors=FALSE, row.names=1
+      sim0 <- read.csv("2_sim_ring_0.csv", stringsAsFactors=FALSE, row.names=1)
+      sim1 <- read.csv("2_sim_ring_b.csv", stringsAsFactors=FALSE, row.names=1)
+      sim2 <- read.csv("2_sim_clique.csv", stringsAsFactors=FALSE, row.names=1)
+      sim3 <- read.csv("2_sim_core_periph.csv", stringsAsFactors=FALSE, row.names=1
 ```
 We use the CMU political blogs dataset which are used with the `stm` package. Because n=13,000 in this dataset, for simplicity we randomly sample 100 blog posts which we use in the following. We offer a subset of the document by term matrix and the document by topic probability matrix, the latter of which is based on the pre-processed topic model solution provided by CMU team (the RData file can be downloaded here: http://goo.gl/VPdxlS).
 
 Load pre-fitted topic model solution on subset of 100 randomly sampled blogposts:
 ``` r
-  tms  <- as.matrix(read.csv("2_subset_topic_solution.csv", 
+    tms  <- as.matrix(read.csv("2_subset_topic_solution.csv", 
                                     stringsAsFactors=FALSE, row.names=1))
 ```
 Calculate cosine similarities between documents based on topic model solution
 ``` r
-  cos.tms <- tcrossprod(tms / sqrt(rowSums(tms * tms)))
+    cos.tms <- tcrossprod(tms / sqrt(rowSums(tms * tms)))
 ```
 
 Create tnet object to calculate Opsahl et al's weighted measures
@@ -93,7 +93,7 @@ Create iGraph object for visualization
 
 ## Calculating Measures
 ``` r
-    # SPANNING --------------------------------------------------------
+    # Textual SPANNING --------------------------------------------------------
         # simulated graphs
         # alpha set to 1.0
         V(sim.net0)$span.1.0 <- textSpan(as.matrix(sim0), alpha = 1.0)
@@ -127,7 +127,8 @@ Create iGraph object for visualization
         V(g.tms)$length <- length$length
 ```
 ## Generating Graphs and Plots
-### Simulated Data
+
+### Simulated Graphs
 ``` r
     # Prepare simulated graphs for ggplot:
         ## disconnected ring
