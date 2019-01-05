@@ -67,7 +67,7 @@ Load simulated datasets:
       sim0 <- read.csv("2_sim_ring_0.csv", stringsAsFactors=FALSE, row.names=1)
       sim1 <- read.csv("2_sim_ring_b.csv", stringsAsFactors=FALSE, row.names=1)
       sim2 <- read.csv("2_sim_clique.csv", stringsAsFactors=FALSE, row.names=1)
-      sim3 <- read.csv("2_sim_core_periph.csv", stringsAsFactors=FALSE, row.names=1
+      sim3 <- read.csv("2_sim_core_periph.csv", stringsAsFactors=FALSE, row.names=1)
 ```
 We use the CMU political blogs dataset which are used with the `stm` package. Because n=13,000 in this dataset, for simplicity we randomly sample 100 blog posts which we use in the following. We offer a subset of the document by term matrix and the document by topic probability matrix, the latter of which is based on the pre-processed topic model solution provided by CMU team (the RData file can be downloaded here: http://goo.gl/VPdxlS).
 
