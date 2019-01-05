@@ -74,17 +74,17 @@ Create tnet object to calculate Opsahl et al's weighted measures
     # simulated ring graphs
     tn.sim0 <- as.tnet(sim0, type="weighted one-mode tnet")
     tn.sim1 <- as.tnet(sim1, type="weighted one-mode tnet")
-    # topic model network
+    # topic model graph
     tn.tms <- as.tnet(cos.tms, type="weighted one-mode tnet")
 ```
 Create iGraph object for visualization
 ``` r
-    # simulated networks
+    # simulated graphs
     sim.net0 <- graph.adjacency(as.matrix(sim0), diag=F, mode="lower", weighted=T)
     sim.net1 <- graph.adjacency(as.matrix(sim1), diag=F, mode="lower", weighted=T)
     sim.net2 <- graph.adjacency(as.matrix(sim2), diag=F, mode="lower", weighted=T)
     sim.net3 <- graph.adjacency(as.matrix(sim3), diag=F, mode="lower", weighted=T)
-    # topic model network
+    # topic model graph
     g.tms <- graph_from_adjacency_matrix(cos.tms, 
                                         weighted = TRUE, 
                                         diag = FALSE,
@@ -94,14 +94,14 @@ Create iGraph object for visualization
 ## Calculating Measures
 ``` r
     # SPANNING --------------------------------------------------------
-        # simulated networks
+        # simulated graphs
         # alpha set to 1.0
         V(sim.net0)$span.1.0 <- textSpan(as.matrix(sim0), alpha = 1.0)
         V(sim.net1)$span.1.0 <- textSpan(as.matrix(sim1), alpha = 1.0)
         V(sim.net2)$span.1.0 <- textSpan(as.matrix(sim2), alpha = 1.0)
         V(sim.net3)$span.1.0 <- textSpan(as.matrix(sim3), alpha = 1.0)
 
-        # topic model network
+        # topic model graph
         # alpha = 1.0
         V(g.tms)$span.1.0 <- textSpan(cos.tms, alpha = 1.0)
     
@@ -110,7 +110,7 @@ Create iGraph object for visualization
         # alpha = 1.0
         V(sim.net0)$deg.1.0 <- as.data.frame(degree_w(tn.sim0, alpha=1.0))$output
         V(sim.net1)$deg.1.0 <- as.data.frame(degree_w(tn.sim1, alpha=1.0))$output
-        # topic model network
+        # topic model graph
         # alpha = 1.0
         V(g.tms)$deg.1.0 <- as.data.frame(degree_w(tn.tms, alpha=1.0))$output
     
@@ -122,14 +122,14 @@ Create iGraph object for visualization
         # alpha = 1.0
         V(g.tms)$clo.1.0 <- as.data.frame(closeness_w(tn.tms, alpha=1.0))$n.closeness
 
-    # Add blog post length as vertex attribute
+    # Add blog post lengths as vertex attribute
         length <- read.csv("2_doc_lengths.csv")
         V(g.tms)$length <- length$length
 ```
 ## Generating Graphs and Plots
 ### Simulated Data
 ``` r
-    # Prepare simulated networks for ggplot:
+    # Prepare simulated graphs for ggplot:
         ## disconnected ring
         l0 <- layout_in_circle(sim.net0)
         sim.net0 <- ggnetwork(sim.net0, layout=l0, weight="weight")
@@ -293,14 +293,14 @@ Create iGraph object for visualization
 ```
 ### Topic Model Solution Graphs
 ``` r
-    ## Prepare Topic Model Network Layout
+    ## Prepare Topic Model Graph Layout
         # Removing edges for visualization
         p.tms <- igraph::delete.edges(g.tms, E(g.tms)[weight<.6])
         # 
         l5 <- layout_with_fr(p.tms, niter=2000)
         p.tms <- ggnetwork(p.tms, layout=l5, weight="weight")
 
-    # Graph colored by Textual Spanning Score, alpha = 1.0
+    # Graph colored by TEXTUAL SPANNING Score, alpha = 1.0
     set.seed(786)
     g.span.1.0 <- ggplot(p.tms, aes(x = x, y = y, xend = xend, yend = yend)) +
                     geom_edges(alpha=.4, color="gray75") +
