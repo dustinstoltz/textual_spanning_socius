@@ -1,6 +1,4 @@
-# "Textual Spanning" 
-
-## Reproduction Guide
+# Textual Spanning: Reproduction Guide
 
 Dustin S. Stoltz and Marshall A. Taylor
 
