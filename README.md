@@ -12,7 +12,7 @@ The `textSpan` function takes this document by document similarity matrix and ou
 # textSpan Function
 ----
 
-```{r}
+``` r
     textSpan <- function(A, alpha=1){
         # zero the diagonal of the similarity matrix
         diag(A) <- 0 
