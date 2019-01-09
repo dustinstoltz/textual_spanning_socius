@@ -2,7 +2,7 @@
 
 Dustin S. Stoltz and Marshall A. Taylor
 
-This is the code and data necessary to reproduce the graphs and plots for Stoltz and Taylor (2019) "Textual Spanning: Finding Discursive Holes in Text Networks" in _Socius_.
+This is the code and data necessary to reproduce the graphs and plots for Stoltz and Taylor (2019) "Textual Spanning: Finding Discursive Holes in Text Networks" forthcoming in _Socius_.
 
 The measure of textual spanning we propose works on a document by document similarity matrix. The basic data structure in text analysis is an MxN matrices of documents by terms, n-grams, parts of speech, topics and so on. The rows, therefore, are vector representations of the text and can be easily compared for similarity, usually with cosine similarity. In our empirical demonstration, we use a topic model solution to generate a similarity matrix. The result is a one-mode document by document matrix, which can easily be interpreted as a weighted adjacency matrix amendable to network metrics. 
 
