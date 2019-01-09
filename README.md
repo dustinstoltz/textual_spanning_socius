@@ -1,6 +1,6 @@
 # Textual Spanning: Reproduction Guide
 
-Dustin S. Stoltz and Marshall A. Taylor
+[Dustin S. Stoltz](https://www.dustinstoltz.com) and [Marshall A. Taylor](https://www.marshalltaylor.net)
 
 This is the code and data necessary to reproduce the graphs and plots for Stoltz and Taylor (2019) "Textual Spanning: Finding Discursive Holes in Text Networks" forthcoming in _Socius_.
 
