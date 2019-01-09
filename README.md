@@ -76,12 +76,12 @@ Load pre-fitted topic model solution on subset of 100 randomly sampled blogposts
     tms  <- as.matrix(read.csv("2_subset_topic_solution.csv", 
                                     stringsAsFactors=FALSE, row.names=1))
 ```
-Calculate cosine similarities between documents based on topic model solution
+Calculate cosine similarities between documents based on topic model solution:
 ``` r
     cos.tms <- tcrossprod(tms / sqrt(rowSums(tms * tms)))
 ```
 
-Create tnet object to calculate Opsahl et al's weighted measures
+Create `tnet` object to calculate Opsahl et al's weighted measures:
 ``` r
     # simulated ring graphs
     tn.sim0 <- as.tnet(sim0, type="weighted one-mode tnet")
@@ -89,7 +89,7 @@ Create tnet object to calculate Opsahl et al's weighted measures
     # topic model graph
     tn.tms <- as.tnet(cos.tms, type="weighted one-mode tnet")
 ```
-Create `iGraph' object for visualization
+Create `iGraph` object for visualization:
 ``` r
     # simulated graphs
     sim.net0 <- graph.adjacency(as.matrix(sim0), diag=F, mode="lower", weighted=T)
@@ -103,9 +103,9 @@ Create `iGraph' object for visualization
                                         add.colnames = NULL)
 ```
 
-### Calculating Measures
+### Calculating Measures -------------------------------------------------------
 ``` r
-    # Textual SPANNING --------------------------------------------------------
+    # Textual SPANNING 
         # simulated graphs
         # alpha set to 1.0
         V(sim.net0)$span.1.0 <- textSpan(as.matrix(sim0), alpha = 1.0)
@@ -513,6 +513,6 @@ Create `iGraph' object for visualization
                         filetype="pdf")
 
 ```
-## THE END -------------------------------------------------------------------
+### THE END -------------------------------------------------------------------
 
 
