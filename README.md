@@ -89,7 +89,7 @@ Create tnet object to calculate Opsahl et al's weighted measures
     # topic model graph
     tn.tms <- as.tnet(cos.tms, type="weighted one-mode tnet")
 ```
-Create iGraph object for visualization
+Create `iGraph' object for visualization
 ``` r
     # simulated graphs
     sim.net0 <- graph.adjacency(as.matrix(sim0), diag=F, mode="lower", weighted=T)
