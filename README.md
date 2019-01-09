@@ -4,20 +4,19 @@
 
 This is the code and data necessary to reproduce the measures, graphs, and plots for Stoltz and Taylor (2019) "Textual Spanning: Finding Discursive Holes in Text Networks" forthcoming in _Socius_.
 
-The measure of textual spanning we propose works on a document by document similarity matrix. The basic data structure in text analysis is an MxN matris of documents by terms, n-grams, parts of speech, topics, and so on. The rows, therefore, are represents the documents as vectors or probability distributions which can be easily compared for similarity, usually with cosine similarity. (In addition to using simulated data, we use a topic model solution to generate a similarity matrix.)
-The result is a one-mode document by document matrix, which can easily be interpreted as a weighted adjacency matrix amendable to network metrics. 
+The measure of textual spanning we propose works on a document by document similarity matrix. The basic data structure in text analysis is an MxN matris of documents by terms, n-grams, parts of speech, topics, and so on. The rows, therefore, represents the documents as vectors which can be compared for similarity. This is usually accomplished with cosine similarity, but there are several other ways. The result is a one-mode document by document matrix, which can easily be interpreted as a weighted adjacency matrix amendable to network metrics.
 
 The `textSpan` function takes this document by document similarity matrix and outputs a document specific measure which increases when a document is similar to documents which are not also similar to each other. This is defined by the following equations:
 
-<img src="https://latex.codecogs.com/gif.latex?S_i%20%3D%20%5Csum_j%20%5Cleft%20%28%20p_%7Bij%7D%20&plus;%20%5Csum_q%20%5Cfrac%7Bp_%7Bqj%7D%7D%7Bp_%7Biq%7D%7D%20%5Cright%20%29%5E2"/>
+<p><img src="https://latex.codecogs.com/gif.latex?S_i%20%3D%20%5Csum_j%20%5Cleft%20%28%20p_%7Bij%7D%20&plus;%20%5Csum_q%20%5Cfrac%7Bp_%7Bqj%7D%7D%7Bp_%7Biq%7D%7D%20%5Cright%20%29%5E2"/></p>
 
 We define proportional similarities <img src="https://latex.codecogs.com/gif.latex?p_%7Bij%7D"> as:
 
-<img src="https://latex.codecogs.com/gif.latex?p_%7Bij%7D%20%3D%20%5Cfrac%7Ba_%7Bij%7D%7D%7Bk_i%20%5Ctimes%20%5Cleft%20%28%20%5Cfrac%7B%5Csum_qa_%7Biq%7D%7D%7Bk_i%7D%20%5Cright%20%29%5E%5Calpha%7D">
+<p><img src="https://latex.codecogs.com/gif.latex?p_%7Bij%7D%20%3D%20%5Cfrac%7Ba_%7Bij%7D%7D%7Bk_i%20%5Ctimes%20%5Cleft%20%28%20%5Cfrac%7B%5Csum_qa_%7Biq%7D%7D%7Bk_i%7D%20%5Cright%20%29%5E%5Calpha%7D"></p>
 
 Finally, to make the measure more interpretable, we standardize the output by taking the __z__-score of each <img src="https://latex.codecogs.com/gif.latex?S_i"> and inverting it such that positive values indicate more textual spanning, while negative values indicate less textual spanning:
 
-<img src="https://latex.codecogs.com/gif.latex?z%28S_i%29%20%3D%20%5Cleft%20%28%20%5Cfrac%7Bs_i-%5Cbar%7Bs%7D%7D%7B%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%28s-%5Cbar%7Bs%7D%29%5E2%7D%7D%7Bn-1%7D%7D%7D%20%5Cright%20%29%20%5Ctimes%20-1">
+<p><img src="https://latex.codecogs.com/gif.latex?z%28S_i%29%20%3D%20%5Cleft%20%28%20%5Cfrac%7Bs_i-%5Cbar%7Bs%7D%7D%7B%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%28s-%5Cbar%7Bs%7D%29%5E2%7D%7D%7Bn-1%7D%7D%7D%20%5Cright%20%29%20%5Ctimes%20-1"></p>
 
 For a more detailed exposition of the math and theories underlying the measure see the paper.
 
