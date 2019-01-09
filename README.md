@@ -14,7 +14,7 @@ We define proportional similarities <img src="https://latex.codecogs.com/gif.lat
 
 <img src="https://latex.codecogs.com/gif.latex?p_%7Bij%7D%20%3D%20%5Cfrac%7Ba_%7Bij%7D%7D%7Bk_i%20%5Ctimes%20%5Cleft%20%28%20%5Cfrac%7B%5Csum_qa_%7Biq%7D%7D%7Bk_i%7D%20%5Cright%20%29%5E%5Calpha%7D">
 
-Finally, to make the measure more interpretable, we standardize the output by taking the \textit{z}-score of each <img src="https://latex.codecogs.com/gif.latex?S_i"> and inverting it such that positive values indicate more textual spanning, while negative values indicate less textual spanning:
+Finally, to make the measure more interpretable, we standardize the output by taking the __z__-score of each <img src="https://latex.codecogs.com/gif.latex?S_i"> and inverting it such that positive values indicate more textual spanning, while negative values indicate less textual spanning:
 
 <img src="https://latex.codecogs.com/gif.latex?z%28S_i%29%20%3D%20%5Cleft%20%28%20%5Cfrac%7Bs_i-%5Cbar%7Bs%7D%7D%7B%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%28s-%5Cbar%7Bs%7D%29%5E2%7D%7D%7Bn-1%7D%7D%7D%20%5Cright%20%29%20%5Ctimes%20-1">
 
