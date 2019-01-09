@@ -18,7 +18,7 @@ Finally, to make the measure more interpretable, we standardize the output by ta
 
 <p><img src="https://latex.codecogs.com/gif.latex?z%28S_i%29%20%3D%20%5Cleft%20%28%20%5Cfrac%7Bs_i-%5Cbar%7Bs%7D%7D%7B%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%28s-%5Cbar%7Bs%7D%29%5E2%7D%7D%7Bn-1%7D%7D%7D%20%5Cright%20%29%20%5Ctimes%20-1"></p>
 
-For a more detailed exposition of the math and theories underlying the measure see the paper.
+For a more detailed exposition of the measure see the paper.
 
 
 ## textSpan Function
