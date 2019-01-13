@@ -48,6 +48,9 @@ For a more detailed exposition of the measure see the paper.
         cSP <- ((cSP-mean(cSP))/sd(cSP))*-1
       }
  ```
+### Performance
+To get a sense of how much time and resources `textSpan` uses up (as written in Base R above), I simulated a handful of similarities matrices between 50x50 and 10000x10000. My machine has a dual-core 2.40GHz with 16 GB of ram running Ubuntu, and this chart shows the total minutes and total RAM used on each matrix.
+![alt text](https://github.com/dustinstoltz/textual_spanning_socius/blob/master/Figure_A_Performance.png?raw=true)
  
 ## Simulated and Empirical Examples
 -----
