@@ -49,7 +49,7 @@ For a more detailed exposition of the measure see the paper.
       }
  ```
 ### Performance
-To get a sense of how much time and resources `textSpan` uses up (as written in Base R above), we simulated a handful of similarities matrices between 50x50 and 10000x10000. The machine we used has a dual-core 2.40GHz with 16 GB of RAM running Ubuntu, and this chart shows the total minutes and total RAM used on each matrix.
+To get a sense of how much time and resources `textSpan` uses up (as written in Base R above), we simulated a handful of similarities matrices between 50x50 and 10000x10000. The machine we used has a dual-core 2.40GHz processor with 16 GB of RAM running Ubuntu, and this chart shows the total minutes and total RAM used on each matrix.
 
 <img align="middle" src="https://raw.githubusercontent.com/dustinstoltz/textual_spanning_socius/master/Figure_A_Performance.png" width="600" height="500">
 
