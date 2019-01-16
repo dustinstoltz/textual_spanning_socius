@@ -55,6 +55,8 @@ To get a sense of how much time and resources `textSpan` uses up (as written in 
 
 ## Simulated and Empirical Examples
 -----
+To reproduction the examples provided in our __Socius__ paper, follow the steps below (after loading the `textSpan` function above).
+
 ### Load and Prepare Data
 Download CSVs, set your working directory, and load these additional packages used in the analysis and visualization:
 ``` r
@@ -73,7 +75,7 @@ Load simulated datasets:
       sim2 <- read.csv("2_sim_clique.csv", stringsAsFactors=FALSE, row.names=1)
       sim3 <- read.csv("2_sim_core_periph.csv", stringsAsFactors=FALSE, row.names=1)
 ```
-We use the CMU political blogs dataset which are used with the `stm` package. Because n=13,000 in this dataset, for simplicity we randomly sample 100 blog posts which we use in the following. We offer a subset of the document by term matrix and the document by topic probability matrix, the latter of which is based on the pre-processed topic model solution provided by CMU team (the RData file can be downloaded here: http://goo.gl/VPdxlS).
+We use the CMU political blogs dataset which are provided in the `stm` package. Because n=13,000 in this dataset, for simplicity we randomly sample 100 blog posts which we use in the following. We offer a subset of the document by term matrix and the document by topic probability matrix, the latter of which is based on the pre-processed topic model solution provided by CMU team (the RData file can be downloaded here: http://goo.gl/VPdxlS).
 
 Load pre-fitted topic model solution on subset of 100 randomly sampled blogposts:
 ``` r
@@ -517,6 +519,7 @@ Create `iGraph` object for visualization:
                         filetype="pdf")
 
 ```
-### THE END -------------------------------------------------------------------
+-------------------------------------------------------------------
+### THE END 
 
 
