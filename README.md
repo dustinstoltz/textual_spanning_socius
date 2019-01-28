@@ -55,7 +55,7 @@ To get a sense of how much time and resources `textSpan` uses up (as written in 
 
 ## Simulated and Empirical Examples
 -----
-To reproduction the examples provided in our __Socius__ paper, follow the steps below (after loading the `textSpan` function above).
+To reproduce the examples provided in our _Socius_ paper, follow the steps below (after loading the `textSpan` function above).
 
 ### Load and Prepare Data
 Download CSVs, set your working directory, and load these additional packages used in the analysis and visualization:
