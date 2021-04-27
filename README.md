@@ -1,4 +1,4 @@
-**NOTE: We issued a correction when we discovered the R function as used in the paper was not directly implementing the measure as defined by the equations in the paper. As such the corrected `textSpan` function will not precisely replicate this paper, see https://github.com/dustinstoltz/textSpan.**
+**NOTE: We issued a correction when we discovered the R function as used in the paper was not directly implementing the measure as defined by the equations in the paper. The code provided here will replicate the revised manuscript, forthcoming in _Socius_. See the textSpan.R file at https://github.com/dustinstoltz/textSpan for the original (erroneous) function.**
 
 # Textual Spanning: Reproduction Guide
 
@@ -26,31 +26,28 @@ For a more detailed exposition of the measure see the paper.
 ## textSpan Function
 ----
 
-**NOTE: The following function is erroneous, but it will replicate the analysis in the original paper. For the corrected version, see https://github.com/dustinstoltz/textSpan**
-
 ``` r
+    # corrected function
     textSpan <- function(A, alpha=1){
-        # zero the diagonal of the similarity matrix
-        diag(A) <- 0 
-        # get denominator (i.e. weighted degree), adjustable by alpha
-        den <- (rowSums(A != 0)) * ((rowSums(A)/
-                (rowSums(A != 0)))^alpha)
-        # divide A by den to get proportional similarities,
-        # equation (2) in the paper
-        PS <- A/den
-        # sum paths of length two using dot product
-        PS2 <- PS%*%PS
-        # cannot divide matrices, so find 
-        # inverse of PS to multiple in next step
-        iPS <- solve(PS)
-        # remove zero edges and calculate the dyadic spanning 
-        # score, which is the term in the parentheses in equation (1)
-        SP <- (PS + (PS2*(as.numeric(iPS>0))))^2  
-        # calculate cumulative spanning score for each vertex
-        cSP <- rowSums(SP) 
-        # standardize and invert the scores, equation (3) in the paper
-        cSP <- ((cSP-mean(cSP))/sd(cSP))*-1
-      }
+            diag(A) <- 0 
+            den <- (rowSums(A != 0)) * ((rowSums(A)/
+                                        (rowSums(A != 0)))^alpha)
+            PS <- A/den
+
+            # --------------------
+            # corrected:
+            ePS <- PS^-1 # invert PS for division
+            # diag(ePS) <- 0
+            ePS[is.infinite(ePS)] <- 0
+            PS2 <- ePS %*% PS # sum paths of length two
+            SP <- (PS + PS2)^2  
+            # --------------------
+            
+            cSP <- rowSums(SP) 
+            cSP <- ((cSP-mean(cSP))/sd(cSP))*-1
+            
+            return(cSP)
+            }
  ```
 
 ## Simulated and Empirical Examples
