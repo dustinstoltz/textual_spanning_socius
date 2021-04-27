@@ -4,7 +4,7 @@
 
 [Dustin S. Stoltz](https://www.dustinstoltz.com) and [Marshall A. Taylor](https://www.marshalltaylor.net)
 
-This is the code and data necessary to reproduce the measures, graphs, and plots for Stoltz and Taylor (2019) ["Textual Spanning: Finding Discursive Holes in Text Networks"](https://journals.sagepub.com/doi/full/10.1177/2378023119827674) in _Socius_.
+This is the code and data necessary to reproduce the measures, graphs, and plots for Stoltz and Taylor (2019) ["Textual Spanning: Finding Discursive Holes in Text Networks"](https://journals.sagepub.com/doi/full/10.1177/2378023119827674) in _Socius_. Note, again, that this code will reproduce the _updated_ version of the paper, re-published in 2021.
 
 The basic data structure in text analysis is an MxN matrix of documents by terms, n-grams, parts of speech, topics, and so on. The rows, therefore, represents the documents as vectors which can be compared for similarity. This is usually accomplished with cosine similarity, but there are several other ways (and our measure does not depend upon any particular measure, but the substantive interpretation of spanning will change accordingly). The result of these similarity measures is a one-mode document by document (MxM) matrix, which can easily be interpreted as a weighted adjacency matrix amendable to network metrics.
 
