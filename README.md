@@ -1,4 +1,4 @@
-**NOTE: We issued a correction when we discovered the R function as used in the paper was not directly implementing the measure as defined by the equations in the paper. The code provided here will replicate the revised manuscript, forthcoming in _Socius_. See the textSpan.R file at https://github.com/dustinstoltz/textSpan for the original (erroneous) function.**
+**NOTE: We issued a correction when we discovered the R function as used in the paper was not directly implementing the measure as defined by the equations in the paper. The code provided here will replicate the revised and republished manuscript in _Socius_. See the textSpan.R file at https://github.com/dustinstoltz/textSpan for the original (erroneous) function.**
 
 # Textual Spanning: Reproduction Guide
 
