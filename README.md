@@ -472,9 +472,9 @@ Create `iGraph` object for visualization:
         span.mat2$color[which(span.mat2$variable=="sddegree")] <- "#ec008b" 
         span.mat2$color[which(span.mat2$variable=="sdbetween")] <- "#fdbf11"
         span.mat2$color[which(span.mat2$variable=="sdclose")] <- "#5c5859"
-        span.mat2$color[which(span.mat2$names=="5781" | span.mat2$names=="1926" |
-                                span.mat2$names=="9850" | span.mat2$names=="13017" |
-                                span.mat2$names=="12698")] <- "black"
+        span.mat2$color[which(span.mat2$names=="6527" | span.mat2$names=="8218" |
+                                span.mat2$names=="8258" | span.mat2$names=="5286" |
+                                span.mat2$names=="1926")] <- "black"
         span.mat2$shape <- NA
         span.mat2$shape[which(span.mat2$color=="black")] <- 1
         span.mat2$shape[which(span.mat2$color!="black")] <- 0
