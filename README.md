@@ -37,7 +37,6 @@ For a more detailed exposition of the measure see the paper.
             # --------------------
             # corrected:
             ePS <- PS^-1 # invert PS for division
-            # diag(ePS) <- 0
             ePS[is.infinite(ePS)] <- 0
             PS2 <- ePS %*% PS # sum paths of length two
             SP <- (PS + PS2)^2  
